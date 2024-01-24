@@ -35,20 +35,16 @@ async function main() {
 
   const createNav = (posts, postsInAPage) => {
     const pageInNav = Math.ceil(posts.length / postsInAPage);
-    const div = document.createElement('div');
     for (let i = 0; i < pageInNav; i++) {
       const span = document.createElement('span');
       span.textContent = i + 1;
       span.addEventListener('click', changePage)
-      div.appendChild(span);
+      navEl.appendChild(span);
     }
-    navEl.insertAdjacentElement('beforeend', div)
+    navEl.firstElementChild.classList.add('active');
   }
-
-
 
   createPostsEl(cropPosts)
   createNav(data, limit)
-
 }
 main()
