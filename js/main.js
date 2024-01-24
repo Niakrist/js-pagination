@@ -11,24 +11,20 @@ async function main() {
 
   const createCropPosts = (currentPage, limit, posts) => {
     const firstIndex = (currentPage - 1) * limit;
-    console.log('firstIndex: ', firstIndex);
-    console.log('lastIndex: ', firstIndex + limit)
     return posts.slice(firstIndex, firstIndex + limit);
   }
 
   const changePage = (e) => {
-    console.log('e.target.textContent', e.target.textContent)
-
+    document.querySelector('.active') && document.querySelector('.active').classList.remove('active');
      const cropPosts = createCropPosts(e.target.textContent, limit, data)
     createPostsEl(cropPosts);
+    e.target.classList.add('active');
   }
 
   const cropPosts = createCropPosts(currentPage, limit, data)
 
   const createPostsEl = (posts) => {
-    console.log('postsEl start', postsEl)
     postsEl.innerHTML = '';
-    console.log('postsEl end', postsEl)
     posts.forEach(post => {
       const div = document.createElement('div');
       div.classList.add('card');
@@ -43,9 +39,7 @@ async function main() {
     for (let i = 0; i < pageInNav; i++) {
       const span = document.createElement('span');
       span.textContent = i + 1;
-
       span.addEventListener('click', changePage)
-
       div.appendChild(span);
     }
     navEl.insertAdjacentElement('beforeend', div)

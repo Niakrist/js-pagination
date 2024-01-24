@@ -10,11 +10,18 @@ body {
   padding: 1rem;
 }
 
-
 span {
   display: inline-block;
-  padding: 20px;
+  padding: 5px 10px;
   border: 1px solid black;
   margin: 5px 5px 0 0;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+span:hover {
+  background-color: rgb(245, 195, 104);
+}
+span.active {
+  background-color: orange;
 }
